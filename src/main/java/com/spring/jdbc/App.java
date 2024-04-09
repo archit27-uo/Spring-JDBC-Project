@@ -1,5 +1,7 @@
 package com.spring.jdbc;
 
+import java.util.List;
+
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,13 +26,16 @@ public class App
         
         StudentDao studentDao = context.getBean("studentDao", StudentDaoImpl.class);
         
-        Student student = new Student();
-        student.setId(5);
-        student.setName("Gouenji");
-        student.setCity("Tokyo");
+//        Student student = new Student();
+//        student.setId(3);
+//        student.setName("Archit");
+//        student.setCity("Khairagarh");
         
-        int result = studentDao.insert(student);
+        List<Student> result = studentDao.getAllStudent();
          
-     System.out.print("Added "+result);   
+        for(Student s: result) {
+        	 System.out.println("Added "+s);  
+        }
+     
     }
 }
